@@ -17,7 +17,23 @@ db.init_app(app)
 api = Api(app)
 
 class Home(Resource):
-    pass
+
+    def get(self):
+
+        response_dict = {
+            "message": "Welcome to the Newsletter RESTful API",
+        }
+
+        response = make_response(
+            response_dict,
+            200
+        )
+
+        return response
+
+"""api.add_resource(Home, '/')"""
+api.add_resource(Newsletters, '/newsletters')
+
 
 if __name__ == '__main__':
     app.run(port=5555, debug=True)
